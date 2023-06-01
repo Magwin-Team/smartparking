@@ -1,0 +1,9 @@
+{
+    "app" : "smartparking",
+    "disks" : [
+        {
+            "name" : "sqlite",
+            "mountTo" : "."
+        }
+    ]
+}

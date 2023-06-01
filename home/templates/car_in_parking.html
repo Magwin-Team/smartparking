@@ -1,0 +1,7 @@
+<div class="flex center-content max-width">
+<div class="flex max-width right-content" style="flex-wrap: wrap;">
+{% for i in cars %}
+{% include "cart_car.html" with user=i.user login_data=i.logindata showexit="no" %}
+{% endfor %}
+</div>
+</div>

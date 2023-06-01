@@ -1,0 +1,9 @@
+2023.02.12 13:48:07 LOG5[ui]: stunnel 5.67 on x86_64-pc-linux-gnu platform
+2023.02.12 13:48:07 LOG5[ui]: Compiled/running with OpenSSL 3.0.7 1 Nov 2022
+2023.02.12 13:48:07 LOG5[ui]: Threading:PTHREAD Sockets:POLL,IPv6,SYSTEMD TLS:ENGINE,OCSP,PSK,SNI Auth:LIBWRAP
+2023.02.12 13:48:07 LOG5[ui]: Reading configuration from file /home/mrmmdi/Documents/smartparking/stunnel/dev_https
+2023.02.12 13:48:07 LOG5[ui]: UTF-8 byte order mark not detected
+2023.02.12 13:48:07 LOG5[ui]: FIPS mode disabled
+2023.02.12 13:48:07 LOG4[ui]: Insecure file permissions on stunnel/stunnel.pem
+2023.02.12 13:48:07 LOG5[ui]: Configuration successful
+2023.02.12 13:48:07 LOG5[ui]: Binding service [https] to :::8443: Address already in use (98)

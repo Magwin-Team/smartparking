@@ -1,0 +1,25 @@
+<div class="max-width flex column">
+    <div class="max-width flex cart-chart">
+        <div class="max-width flex center-content center-align column" style="flex: 1.5;">
+            <div class="column flex center-content center-align box-chart" style="width: max-content;">
+                <span style="font-weight: 100;font-size: 14px;text-align: end;width: 100%;"> : نمودار درآمد هفتگی</span>
+                <canvas id="myChart" style="width: 100%;height: 250px;margin-top: 15px;"></canvas>
+            </div>
+            
+        </div>
+        <div class="max-width flex center-content center-align cart-home-panel" style="flex: 1;">
+            <div class="max-width flex center-align column center-content" style="height: 100%;flex: 1;background-color: white;border-radius: 10px;box-shadow: 2px 1px 4px rgb(0 0 0 / 25%);">
+                <span id="clock" style="font-weight: 300;font-size: 13px;margin: 10px;"></span>
+                <span style="font-weight: 100;font-size: 14px;margin-top: 10px;">ظرفیت هم اکنون : {{zarfiat.capacity_full}}/{{zarfiat.capacity}}</span>
+                <span style="font-weight: 100;font-size: 14px;margin-top: 10px;">میزان درآمد امروز : {{income}} تومن</span>
+            </div>
+        </div>
+        
+    </div>
+    <div class="max-width flex column center-align center-content" style="margin-top: 20px;">
+        <div class="column flex center-content center-align box-chart" style="width: max-content;">
+            <span style="font-weight: 100;font-size: 14px;text-align: end;width: 100%;"> : میزان ورود هفتگی</span>
+            <canvas id="myChart2" style="width: 100%;height: 350px;margin-top: 15px;"></canvas>
+        </div>
+    </div>
+</div>

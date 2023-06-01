@@ -1,0 +1,35 @@
+<div class="flex max-width center-content" style="margin-bottom: 15px;">
+    <div class="flex max-width center-content card-parking" style="box-shadow: 0px 4px 4px rgba(0 0 0 / 45%);background-color: #026c8c;border-radius: 10px; padding: 10px 20px;">
+        <div class="flex max-width left-content">
+            <div class="flex column center-content">
+                <span style="color: white;font-size: 13px;text-align: start;">فاصله از شما : {{parking.distanse}} کیلومتر</span>
+                <span style="color: white;margin-top: 7px;font-size: 13px;text-align: start;">ظرفیت هم اکنون : {{parking.capacity_full}}/{{parking.capacity}}</span>
+                <div class="flex" style="margin-top: 7px;">
+                    <a href="/logintoparking/{{parking.parking_id}}"><button style="margin-right: 10px; background-color: #00b741f2;color: white;font-size: 12.5px;padding: 6px 12px;border-radius: 5px;">
+                    <span>
+                        درخواست ورود به پارکینگ
+                    </span>
+                    </button>
+                    </a>
+                    <a href="{{parking.router_link}}">
+                    <button style="background-color: #ff8d00;color: white;padding: 6px 12px;border-radius: 5px;font-size: 12.5px;" ><span>
+                        مسیریابی
+                    </span></button>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="flex right-content max-width center-align" style="text-align: center;">
+            <img src="{{parking.parking_image}}" alt="" srcset="" height="60px" style="margin-right: 5px;" class="logo-parking">
+            <div class="column flex " style="text-align: center;">
+                <span style="margin-top: 10px;color: white;font-size: 13px;text-align: center;">{{parking.parking_name_fa}}</span>
+                <span style="margin-top: 7px;color: white;font-size: 13px;text-align: center;">{{parking.parking_name}}</span>
+                <div class="flex center-content center-align">
+                    <span style="color: white; text-align: center;margin-top: 4px;margin-right: 4px;font-size: 13px;" class="center-align flex">{{parking.parking_like}}</span>
+                    <img src="./static/asset/images/star.png" alt="" srcset="" style="width: 18px;height: 18px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

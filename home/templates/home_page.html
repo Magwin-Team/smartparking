@@ -1,0 +1,37 @@
+{% extends "master.html" %}
+{% load static %}
+{% block title %}
+پارکینگ هوشمند
+{% endblock title %}
+
+{% block content %}
+{% if isLogined == "false" %}
+{% include "header.html" with isLogined=isLogined%}
+<div class='flex login-page center-align' style="margin-top: 50px;">
+    <div class='login-container center-align left-content flex-1 flex'>
+        <div class='login-cart flex column center-content center-align'>
+            <span>ورود</span>
+            <input type="text" class='input-acc margin-15' placeholder='نام کاربری' id="username-i"/>
+            <input type="password" class='input-acc margin-24' placeholder='رمز عبور' id="password-i"/>
+            <span class="{{ login.valid }}" style="color: red;font-size: 14px;">!!!اطلاعات وارد شده صحیح نمی باشد</span>
+            <button id="submit-login" class='submit-btn'>ثبت</button>
+            <a href="/loginparking" style="font-size: 12px;color: blue;">ورود برای  پارکینگ دار</a>
+        </div>
+    </div>
+    <span class='center-content flex-1 flex title-login'>پارکینگ یاب سیستمی برای راحتی و امنیت شما در سطح شهر</span>
+    <div class='flex-1 right-content flex'>
+        <img src="./static/asset/images/login/car.png" class="image-home-car" alt='car'/>
+    </div>
+</div>
+<script>
+    document.getElementById('submit-login').onclick = signin;
+    function signin(){
+        document.location.href = "?username=" + document.getElementById('username-i').value + "&password=" + document.getElementById('password-i').value
+    }
+</script>
+
+{% endif %}
+{% if isLogined == "true" %}
+{% include "dashbordcontroller.html" %}
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static './css/index.css' %}">
+    <link rel="stylesheet" href="{% static './css/login.css' %}">
+    <title>پارکینگ یاب</title>
+</head>
+<body onload="sendloc()">
+    <div class="flex right-content dont-show button-show-menu" style="margin: 20px 20px 0px 0px;">
+        <button class="menu-shower" id="show-menu-button"><img src="./static/asset/images/menu.png" alt="" width="20px"></button>
+    </div>
+    
+    <div class="flex max-width ">
+        <div class="max-width flex column panel-show" style="padding: 35px 20px;">
+            {% if index == 0 %}
+            {% include "nearbyparkinglots.html" with parking=parking %}
+            {% elif index == 1 %}
+            {% include "historyUser.html" with parkings=parkings%}
+            {% elif index == 3 %}
+            {% include "infouser.html" with userinfo=user%}
+            {% elif index == 4 %}
+            {% include "changepassword.html" with valid=valid %}
+            {% endif %}
+        </div>
+        <!-- Dashboard -->
+        <div style="min-height: 100vh;background-color: #6FA8FF;padding: 25px 20px;margin: 35px 20px 20px 0px;border-radius: 15px;" class="flex column center-align dashbord-b">
+            <img src="./static/asset/images/login/car.png" alt="" style="width: 100px;">
+            <span style="color: white;font-size: 16px;text-align: end;width: max-content;margin: 10px 0px;">{{user.firstname}} {{user.lastname}}</span>
+            <div class="flex center-align" style="border-radius: 5px;border: black 2px solid;background-color: white;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9N0TSPVTbxzPBiTOrJQMoZfoAhkZi4fEI9Q&usqp=CAU" alt="" style="width: 13px;">
+                <span>&nbsp;{{user.car_tag_1}}&nbsp;</span>
+                <span>&nbsp;{{user.car_tag_2}}&nbsp;</span>
+                <span>&nbsp;{{user.car_tag_3}}&nbsp;</span>
+                <div style="width: 1px;height: 100%;background-color: black;"></div>
+                <span>&nbsp;{{user.car_tag_4}}&nbsp;</span>
+            </div>
+            {% if inparking != '' %}
+            <span style="color:rgb(122 255 82);text-align: center;margin: 10px 0px;line-height: 25px;">شما در {{inparking}} هستید</span>
+            <a style="color: white;background-color: red;padding: 5px 10px;margin-top: 0px;border-radius: 10px;font-size: 13px;" href="/exitparking/{{parking_id}}">خروج از پارکینگ</a>
+            {% endif %}
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="/">
+                <span style="width: max-content;font-size: 13px;color: white;" >پارکینگ های اطراف من&nbsp;</span>
+                <img src="./static/asset/images/caricon.png" alt="" width="22px">
+            </a>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="/historyuser">
+                <span style="width: max-content;font-size: 13px;color: white;">تاریخچه&nbsp;</span>
+                <img src="./static/asset/images/history.png" alt="" width="22px">
+            </a>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="">
+                <span style="width: max-content;font-size: 13px;color: white;">تاریخچه پرداخت&nbsp;</span>
+                <img src="./static/asset/images/cardhistory.png" alt="" width="22px">
+            </a>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="/infouser">
+                <span style="width: max-content;font-size: 13px;color: white;">اطلاعات کاربری&nbsp;</span>
+                <img src="./static/asset/images/user.png" alt="" width="22px">
+            </a>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="/changeuserpassword">
+                <span style="width: max-content;font-size: 13px;color: white;">تغییر رمز عبور&nbsp;</span>
+                <img src="./static/asset/images/lock.png" alt="" width="22px">
+            </a>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="/logout">
+                <span style="width: max-content;font-size: 13px;color: white;">خروج&nbsp;</span>
+                <img src="./static/asset/images/logout.png" alt="" width="22px">
+            </a>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <div class="button-close-show max-width flex center-align column dont-show">
+                <button class="flex center-align center-content" onclick="document.location.reload()" style="background-color: transparent;">
+                    <span style="width: max-content;font-size: 13px;color: white;">بستن&nbsp;</span>
+                </button>
+                <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        btn = document.getElementById('button-show-menu')
+        document.getElementById('show-menu-button').onclick = ()=>{
+            console.log("OK")
+            btn = document.getElementsByClassName('button-show-menu')[0]
+            btn.style.cssText = 'display:none !important'
+            menu = document.getElementsByClassName('dashbord-b')[0]
+            menu.style.cssText = 'display:flex !important;min-height: 100vh;background-image: linear-gradient(180deg,#00a8db 10%,#224abe 100%);padding: 25px 20px;margin: 35px 20px 20px 20px;border-radius: 15px;'
+            panel = document.getElementsByClassName('panel-show')[0].classList.add('dont-show')
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<div class="max-width flex column right-content bottom-align">
+    <span style="font-size: 25px;">اطلاعات کاربری</span>
+    <span style="font-size: 17px;margin-top: 15px;">{{userinfo.username}} : نام کاربری </span>
+    <div class="flex right-content infouserr" style="width: 85%;margin-top: 15px;">
+        <span style="font-size: 17px;" class="max-width flex left-content"> نام خانوادگی : {{userinfo.lastname}} </span>
+        <span style="font-size: 17px;" class="max-width flex right-content"> نام : {{userinfo.firstname}} </span>
+    </div>
+    <div class="flex right-content infouserr" style="width: 85%;margin-top: 15px;">
+        <span style="font-size: 17px;" class="max-width flex left-content">{{userinfo.email}} : ایمیل</span>
+        <span style="font-size: 17px;" class="max-width flex right-content">{{userinfo.tel_number}} : شماره تلفن همراه</span>
+    </div>
+    <div class="flex right-content infouserr" style="width: 85%;margin-top: 15px;">
+        <span style="font-size: 17px;" class="max-width flex left-content">{{userinfo.national_code}} : کد ملی</span>
+        <span style="font-size: 17px;" class="max-width flex right-content">{{userinfo.date_of_birth}} : تاریخ تولد</span>
+    </div>
+    <div class="flex center-content infouserr" style="width: 85%;margin-top: 15px;flex-direction: row !important;">
+        <div class="flex center-align center-content" style="border-radius: 5px;border: black 2px solid;background-color: white;width: min-content !important;flex-direction: row !important;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9N0TSPVTbxzPBiTOrJQMoZfoAhkZi4fEI9Q&usqp=CAU" alt="" style="width: 13px;">
+            <span>&nbsp;{{userinfo.car_tag_1}}&nbsp;</span>
+            <span>&nbsp;{{userinfo.car_tag_2}}&nbsp;</span>
+            <span>&nbsp;{{userinfo.car_tag_3}}&nbsp;</span>
+            <div style="width: 1px;height: 100%;background-color: black;"></div>
+            <span>&nbsp;{{userinfo.car_tag_4}}&nbsp;</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+
+{% extends "master.html" %}
+<!-- {% load static %} -->
+{% block title %}
+ثبت نام کاربر
+{% endblock title %}
+
+{% block content %}
+<div class='body-login max-width flex center-content center-align' style="margin: 10px 0px;">
+    <form class='login-cart flex column center-content center-align' method="post" style="width: min-content;">
+        <span>ثبت نام</span>
+        <input type="text" class='input-acc margin-15' placeholder='نام' name="firstname" required />
+        <input type="text" class='input-acc margin-15' placeholder='نام خانوادگی' name="lastname" required />
+        <input type="text" class='input-acc margin-15' placeholder='نام کاربری' name="username" required />
+        <input type="password" class='input-acc margin-24' placeholder='رمز عبور' name="password" required />
+        <input type="password" class='input-acc margin-24' placeholder='تکرار رمز عبور' name="repassword" required />
+        <input type="text" class='input-acc margin-24' placeholder='کد ملی' name="ncode" required />
+        <input type="email" class='input-acc margin-24' placeholder='ایمیل' name="email" required />
+        <input type="tel" class='input-acc margin-24' placeholder='شماره تلفن' name="phone" required />
+        <input type="text" class='input-acc margin-24' placeholder='شماره کارت' name="cart-id" required />
+        <input type="text" class='input-acc margin-24' placeholder='اظهارنامه مالیاتی' name="tax-return" required />
+        <input type="text" class='input-acc margin-24' placeholder='لینک عکس کارت ملی' name="image-ncode" required />
+        <input type="text" class='input-acc margin-24' placeholder='لینک عکس پروانه کسب' name="image-business-license"  required />
+        <input type="text" class='input-acc margin-24' placeholder='نام پارکینگ به انگلیسی' name="name-parking" required />
+        <input type="text" class='input-acc margin-24' placeholder='نام پارکینگ به فارسی' name="name-pr-parking" required />
+        <input type="text" class='input-acc margin-24' placeholder='آدرس پارکینگ' name="parking-location" required />
+        <input type="number" class='input-acc margin-24' placeholder='هزینه پارکینگ به دقیقه' name="triff-parking" required />
+        <input type="number" class='input-acc margin-24' placeholder='ظرفیت پارکینگ' name="capacity-parking" required />
+        <span style="font-size: 15px;">تاریخ تولد</span>
+        <input type="date" class='input-acc margin-24' placeholder='تاریخ تولد' name="birth" required />
+        <span class="{{ login.valid }}" style="color: red;font-size: 14px;">!!!اطلاعات وارد شده مشکل دارد</span>
+        <div class="flex max-width {{login.isok}}">
+            <span class="flex max-width" style="color: rgb(28, 162, 0);font-size: 14px;text-align:center">با تشکر از انتخاب شما. همکاران ما طی 72 ساعت آینده برای مشاوره تماس خواهند گرفت.ممنون از صبر و شکیبایی شما</span>
+        </div>
+        
+        <button class='submit-btn' type="submit" style="color: white;">ثبت</a>
+    </form>
+</div>
+{% endblock content %}

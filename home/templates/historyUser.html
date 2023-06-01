@@ -1,0 +1,7 @@
+<div class="flex center-content max-width">
+<div class="flex max-width right-content" style="flex-wrap: wrap;">
+{% for i in parkings %}
+{% include "card_historyUser.html" with data=i %}
+{% endfor %}
+</div>
+</div>

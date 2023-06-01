@@ -1,0 +1,20 @@
+
+{% extends "master.html" %}
+<!-- {% load static %} -->
+{% block title %}
+ورود برای پارکینگ دار
+{% endblock title %}
+
+{% block content %}
+<div class='body-login max-width flex center-content center-align max-heigth'>
+    <form class='login-cart flex column center-content center-align' method="post">
+        <span>ورود</span>
+        <input type="username" class='input-acc margin-15' placeholder='نام کاربری' name="username" required />
+        <input type="tel" class='input-acc margin-15' placeholder='شماره موبایل' name="phone" required />
+        <input type="password" class='input-acc margin-24' placeholder='رمز عبور' name="password" required />
+        <input type="text" class='input-acc margin-24' placeholder='کد ملی' name="ncode" required />
+        <span class="{{ login.valid }}" style="color: red;font-size: 14px;">!!!اطلاعات وارد شده صحیح نمی باشد</span>
+        <button type="submit" class='submit-btn' style="color: white !important;">ثبت</a>
+    </form>
+</div>
+{% endblock content %}

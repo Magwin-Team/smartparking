@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static './css/index.css' %}">
+    <link rel="stylesheet" href="{% static './css/login.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <title>پارکینگ یاب</title>
+</head>
+<body>
+    
+    <div class="flex right-content dont-show button-show-menu" style="margin: 20px 20px 0px 0px;">
+        <button class="menu-shower" id="show-menu-button"><img src="./static/asset/images/menu.png" alt="" width="20px"></button>
+    </div>
+    
+
+
+
+
+
+
+
+    <div class="flex max-width ">
+        <div class="max-width flex column panel-show bottom-align" style="padding: 35px 20px;">
+            {% if index == 0 %}
+            {% include "homemanager.html" with user=user %}
+            {% elif index == 1 %}
+            {% include "car_traffics.html" %}
+            {% elif index == 2 %}
+            {% include "car_in_parking.html" %}
+            {% elif index == 3 %}
+            {% include "managerinfo.html" with userinfo=user parking=parking %}
+            {% elif index == 4 %}
+            {% include "changepasswordmanager.html" %}
+            {% endif %}
+        </div>
+        <!-- Dashboard -->
+        <div style="min-height: 100vh;background-color: #6FA8FF;padding: 25px 20px;margin: 35px 20px 20px 0px;border-radius: 15px;" class="flex column center-align dashbord-b">
+            <img src="./static/asset/images/parkingimage.png" alt="" style="width: 100px;">
+            <span style="color: white;font-size: 16px;text-align: end;width: max-content;margin: 10px 0px;">{{user.firstname}} {{user.lastname}}</span>
+            <span style="color: white;" id="clockdashbord"></span>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="/">
+                <span style="width: max-content;font-size: 13px;color: white;" >خانه&nbsp;</span>
+                <img src="./static/asset/images/home.png" alt="" width="22px">
+            </a>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="/historytraffic">
+                <span style="width: max-content;font-size: 13px;color: white;">تاریخچه ورود و خروج&nbsp;</span>
+                <img src="./static/asset/images/tranfer.png" alt="" width="18px">
+            </a>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="/carinparking">
+                <span style="width: max-content;font-size: 13px;color: white;">ماشین ها در پارکینگ&nbsp;</span>
+                <img src="./static/asset/images/caricon.png" alt="" width="22px">
+            </a>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="/infomanager">
+                <span style="width: max-content;font-size: 13px;color: white;">اطلاعات کاربری&nbsp;</span>
+                <img src="./static/asset/images/user.png" alt="" width="22px">
+            </a>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="/changemanagerpassword">
+                <span style="width: max-content;font-size: 13px;color: white;">تغییر رمز عبور&nbsp;</span>
+                <img src="./static/asset/images/lock.png" alt="" width="22px">
+            </a>
+            
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <a class="flex center-align center-content" href="/logout">
+                <span style="width: max-content;font-size: 13px;color: white;">خروج&nbsp;</span>
+                <img src="./static/asset/images/logout.png" alt="" width="22px">
+            </a>
+            <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            <div class="button-close-show max-width flex center-align column dont-show">
+                <button class="flex center-align center-content" onclick="document.location.reload()" style="background-color: transparent;">
+                    <span style="width: max-content;font-size: 13px;color: white;">بستن&nbsp;</span>
+                </button>
+                <div class="line" style="margin: 10px 10px;background-color: rgba(0, 0, 0, 0.3);"></div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        btn = document.getElementById('button-show-menu')
+        document.getElementById('show-menu-button').onclick = ()=>{
+            console.log("OK")
+            btn = document.getElementsByClassName('button-show-menu')[0]
+            btn.style.cssText = 'display:none !important'
+            menu = document.getElementsByClassName('dashbord-b')[0]
+            menu.style.cssText = 'display:flex !important;min-height: 100vh;background-image: linear-gradient(180deg,#00a8db 10%,#224abe 100%);padding: 25px 20px;margin: 35px 20px 20px 20px;border-radius: 15px;'
+            panel = document.getElementsByClassName('panel-show')[0].classList.add('dont-show')
+        }
+        
+    </script>
+    <script data-datetime = '{{date}}'>
+        Array.prototype.max = function() {
+            return Math.max.apply(null, this);
+        };
+
+        Array.prototype.min = function() {
+            return Math.min.apply(null, this);
+        };
+        var datejalili = document.currentScript.dataset.datetime
+        function currentTimeDashbord(){
+            let date = new Date();
+            let hh = date.getHours();
+            let mm = date.getMinutes();
+            let ss = date.getSeconds();
+            let session = "AM";
+            
+            if(hh == 0){
+                hh = 12;
+            }
+            if(hh > 12){
+                hh = hh - 12;
+                session = "PM";
+            }
+            
+            hh = (hh < 10) ? "0" + hh : hh;
+            mm = (mm < 10) ? "0" + mm : mm;
+            ss = (ss < 10) ? "0" + ss : ss;
+            let time = hh + ":" + mm + ":" + ss + " " + session;
+            document.getElementById("clockdashbord").innerText = time;
+            let t = setTimeout(function(){ currentTimeDashbord() }, 1000);
+        }
+        function currentTime() {
+            let date = new Date();
+            let hh = date.getHours();
+            let mm = date.getMinutes();
+            let ss = date.getSeconds();
+            let session = "AM";
+            
+            if(hh == 0){
+                hh = 12;
+            }
+            if(hh > 12){
+                hh = hh - 12;
+                session = "PM";
+            }
+            
+            hh = (hh < 10) ? "0" + hh : hh;
+            mm = (mm < 10) ? "0" + mm : mm;
+            ss = (ss < 10) ? "0" + ss : ss;
+            let time = hh + ":" + mm + ":" + ss + " " + session;
+            var ta = 'امروز' + datejalili
+            document.getElementById("clock").innerText = time + ' : ' + ta +' '+ 'ساعت';
+            let t = setTimeout(function(){ currentTime() }, 1000);
+        }
+        currentTimeDashbord();
+        currentTime();
+        
+    </script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: "line",
+            data: {
+            labels: JSON.parse("{{ date_list|escapejs }}"),
+            datasets: [{
+                fill: false,
+                lineTension: 0,
+                borderColor: "rgba(255,109,0,0.8)",
+                backgroundColor: "rgba(255,109,0,0.8)",
+                borderWidth: 4,
+                data: JSON.parse("{{ income_list|escapejs }}")
+            }]
+            },
+            options: {
+            legend: {display: false},
+                responsive:false,
+            scales: {
+                yAxes: [{ticks: {min: 0, max:JSON.parse("{{ income_list|escapejs }}").max() * 1.5 + 1}}],
+            },
+            }
+        });
+        ctx = document.getElementById('myChart2').getContext('2d');
+        new Chart(ctx, {
+            type: "line",
+            data: {
+            labels: JSON.parse("{{ date_list|escapejs }}"),
+            datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(0,168,6,0.8)",
+                borderColor: "rgba(0,168,6,0.8)",
+                borderWidth: 4,
+                data: JSON.parse("{{ exit_list|escapejs }}")
+            }]
+            },
+            options: {
+            legend: {display: false},
+                responsive:false,
+            scales: {
+                yAxes: [{ticks: {min: 0, max:JSON.parse("{{ exit_list|escapejs }}").max()*1.5 + 1}}],
+            },
+            }
+        });
+    </script>
+</body>
+</html>

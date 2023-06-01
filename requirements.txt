@@ -1,0 +1,7 @@
+Django==4
+DateTimePersian
+persian_tools
+whitenoise
+persiantools
+requests
+pytz

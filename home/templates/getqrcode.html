@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دریافت QrCode</title>
+    <link rel="stylesheet" href="{% static './css/index.css' %}">
+    <link rel="stylesheet" href="{% static './css/login.css' %}">
+</head>
+<body>
+    <div class="flex max-widht max-heigth center-align center-content column">
+        <img src="{{qrcode}}" alt="">
+        {% if status == "ok" %}
+        <span style="color: green;font-size: 20px;margin: 10px 0px;">.درخواست با موفقیت ثبت شد</span>
+        <span>خود را نگهداری و در باجه استفاده کنید qrcode لطفا</span>
+        <a style="color: white;background-color: red;padding: 5px 10px;margin-top: 10px;border-radius: 10px;" href="/removeloginqr">حذف درخواست</a>
+        {% else %}
+        <span style="color: red;font-size: 20px;">
+            شما قبلا در پارکینگ دیگری وارد یا کد دریافت کردید
+        </span>
+        {% endif %}
+    </div>
+</body>
+</html>

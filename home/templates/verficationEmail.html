@@ -1,0 +1,21 @@
+
+{% extends "master.html" %}
+<!-- {% load static %} -->
+{% block title %}
+تایید ایمیل
+{% endblock title %}
+
+{% block content %}
+<div class='body-login max-width flex center-content center-align max-heigth'>
+    <div class='login-cart flex column center-content center-align'>
+        <span>ورود</span>
+        <input type="email" class='input-acc margin-15' placeholder='کد ورود' id={id} />
+        <span class="{{ email.valid }}" style="color: red;font-size: 14px;">!!!کد وارد شده صحیح نمی باشد</span>
+        <a class='submit-btn' href="">ثبت</a>
+        <div class='line'></div>
+        <button class='center-align flex google-btn'>
+            <img src="./static/asset/images/login/google.png" alt="google"></img>
+        </button>
+    </div>
+</div>
+{% endblock content %}

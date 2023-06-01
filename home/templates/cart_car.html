@@ -1,0 +1,23 @@
+<div class="flex center-align rcard" style="background: linear-gradient(92.69deg, #00C1EB 0.65%, #00B3F9 100.59%);box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.18);border-radius: 8px;margin: 10px;padding: 10px 15px;">
+    <div class="flex center-align" style="height: min-content;border-radius: 5px;border: black 2px solid;background-color: white;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9N0TSPVTbxzPBiTOrJQMoZfoAhkZi4fEI9Q&usqp=CAU" alt="" style="width: 13px;">
+        <span>&nbsp;{{user.car_tag_1}}&nbsp;</span>
+        <span>&nbsp;{{user.car_tag_2}}&nbsp;</span>
+        <span>&nbsp;{{user.car_tag_3}}&nbsp;</span>
+        <div style="width: 1px;height: 28px;background-color: black;"></div>
+        <span>&nbsp;{{user.car_tag_4}}&nbsp;</span>
+    </div>
+    <div class="flex column" style="margin-left: 30px;">
+        <span style="color: white;font-size: 15px;">{{user.firstname}} {{user.lastname}}</span>
+        <span style="color: white;font-size: 13px;margin-top: 4px;">زمان ورود : {{login_data.login_time}}</span>
+        {% if showexit == "" %}
+        <span style="color: white;font-size: 13px;margin-top: 2px;">زمان خروج : 
+            {% if exit == "ok" %}
+            <span class="" style="color:rgb(255, 0, 0);font-size: 15px;">خارج نشده</span>
+            {% else %}
+            <span class="" style="color:rgb(0 255 21);font-size: 15px;">{{exit_time}}</span>
+            {% endif %}
+        </span>
+        {% endif %}
+    </div>
+</div>

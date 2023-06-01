@@ -1,0 +1,69 @@
+
+{% extends "master.html" %}
+<!-- {% load static %} -->
+{% block title %}
+ثبت نام کاربر
+{% endblock title %}
+
+{% block content %}
+<div class='body-login max-width flex center-content center-align' style="margin: 10px 0px;">
+    
+    <form class='login-cart flex column center-content center-align' method="post">
+        
+        <span>ثبت نام</span>
+        <input type="text" class='input-acc margin-15' placeholder='نام' name="name"  required />
+        <input type="text" class='input-acc margin-15' placeholder='نام خانوادگی' name="lastname" required />
+        <input type="text" class='input-acc margin-15' placeholder='نام کاربری' name="username" required />
+        <input type="password" class='input-acc margin-24' placeholder='رمز عبور' required name="password" />
+        <input type="password" class='input-acc margin-24' placeholder='تکرار رمز عبور' required name="repassword" />
+        <input type="text" class='input-acc margin-24' placeholder='کد ملی' name="ncode" required />
+        <input type="email" class='input-acc margin-24' placeholder='ایمیل' name="email" required />
+        <input type="tel" class='input-acc margin-24' placeholder='شماره تلفن' name="number" required />
+        <div class="flex" name="carPlateWrapper" style="width: 265px;background-color: white;border: black solid 1px;border-radius: 8px;padding: 0px;">
+            <img src="./static/asset/images/iranpe.png" alt="">
+            <input class="pe-input" type="tel" placeholder="⚊ ⚊" name="carPlateSection1" style="width: 20%;" maxlength="2" minlength="2" required>
+            <select id="pe-input" class="pe-input" style="width: 20%;" required name="hpelak">
+                <option value="الف">الف</option>
+                <option value="ب">ب</option>
+                <option value="پ">پ</option>
+                <option value="ت">ت</option>
+                <option value="ث">ث</option>
+                <option value="ج">ج</option>
+                <option value="د">د</option>
+                <option value="ز">ز</option>
+                <option value="س">س</option>
+                <option value="ش">ش</option>
+                <option value="ص">ص</option>
+                <option value="ط">ط</option>
+                <option value="ع">ع</option>
+                <option value="ف">ف</option>
+                <option value="ق">ق</option>
+                <option value="ک">ک</option>
+                <option value="گ">گ</option>
+                <option value="ل">ل</option>
+                <option value="م">م</option>
+                <option value="ن">ن</option>
+                <option value="و">و</option>
+                <option value="ه">ه</option>
+                <option value="ی">ی</option>
+                <option value="ژ">معلولین</option>
+                <option value="تشریفات">تشریفات</option>
+                <option value="D">D</option>
+                <option value="S">S</option>
+            </select>
+            <input class="pe-input" type="tel" placeholder="⚊ ⚊ ⚊" name="carPlateSection3" style="width: 40%;" required >
+            <div class="column flex center-content center-align" style="width: 12%;margin-right: 11px;">
+                <span style="margin: 0;font-size: 15px;">
+                    ایران
+                </span>
+                <input required type="tel" class="pe-input" placeholder="⚊ ⚊" name="carPlateSection4" style="width: 100%;margin-top: 7px;/* width: auto; */">
+            </div>
+            
+        </div>
+        <span style="font-size: 15px;margin-top: 15px;">تاریخ تولد</span>
+        <input type="date" class='input-acc margin-24' placeholder='تاریخ تولد' required name="birth" />
+        <span class="{{ login.valid }}" style="color: red;font-size: 14px;">!!!اطلاعات وارد شده مشکل دارد</span>
+        <button type="submit" class='submit-btn' style="color: white;" href="">ثبت</button>
+    </form>
+</div>
+{% endblock content %}
